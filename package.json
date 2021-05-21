@@ -1,0 +1,15 @@
+{
+  "name": "k8s-kafka",
+  "version": "1.0.0",
+  "description": "https://github.com/Yolean/kubernetes-kafka",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafkajs": "^1.15.0",
+    "npm-hook-receiver": "^1.0.0"
+  }
+}
