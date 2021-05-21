@@ -16,3 +16,17 @@ https://github.com/edenhill/kafkacat
  https://www.magalix.com/blog/kafka-on-kubernetes-and-deploying-best-practice
 
  https://betterprogramming.pub/how-to-run-highly-available-kafka-on-kubernetes-a1824db8a3e2
+
+
+kubectl -n kafka port-forward kafka-0 9094
+ kafka/bin/
+ 
+ ./kafka-topics.sh --create \
+--zookeeper localhost:2181 \
+--replication-factor 2 \
+--partitions 3 \
+--topic unique-topic-name
+
+
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic test
+
