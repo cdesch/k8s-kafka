@@ -8,8 +8,7 @@ const brokers = ["localhost:9094"]
 const topic = "mytopic"
 
 // initialize a new kafka client and initialize a producer from it
-const kafka = new Kafka({ clientId, brokers })
-
+const kafka = new Kafka({ clientId, brokers, connectionTimeout: 3000})
 const consumer = kafka.consumer({ groupId: clientId })
 
 const consume = async () => {
@@ -19,9 +18,15 @@ const consume = async () => {
 	await consumer.subscribe({ topic })
 	await consumer.run({
 		// this function is called every time the consumer gets a new message
-		eachMessage: ({ message }) => {
+		eachMessage: ({  topic, partition, message, timestamp }) => {
 			// here, we just log the message to the standard output
-			console.log(`received message: ${message.value}`)
+			// console.log(`received message: ${message.value}`)
+			console.log({
+				key: message.key.toString(),
+				value: message.value.toString(),
+				headers: message.headers,
+				timestamp: message.timestamp,
+			})
 		},
 	})
 }

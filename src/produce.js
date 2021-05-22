@@ -40,4 +40,24 @@ const produce = async () => {
 	}, 1000)
 }
 
+const sendTransaction = async (data) => {
+	await producer.send({
+		topic: 'transactions',
+		messages: [
+			{ key: 'key1', value: 'hello world', partition: 0 },
+			{ key: 'key2', value: 'hey hey!', partition: 1 }
+		],
+	})	
+}
+
+const sendAccountUpdate = async (data) => {
+	await producer.send({
+		topic: 'accounts',
+		messages: [
+			{ key: 'key1', value: 'hello world', partition: 0 },
+			{ key: 'key2', value: 'hey hey!', partition: 1 }
+		],
+	})	
+}
+
 module.exports = produce
